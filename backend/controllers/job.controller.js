@@ -31,9 +31,12 @@ export const postJob = async (req, res) => {
         });
     } catch (error) {
         console.log(error);
+        return res.status(500).json({
+            message: error.message || "Something went wrong while creating the job.",
+            success: false
+        });
     }
 }
-// student k liye
 export const getAllJobs = async (req, res) => {
     try {
         const keyword = req.query.keyword || "";
